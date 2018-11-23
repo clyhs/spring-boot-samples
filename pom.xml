@@ -52,6 +52,7 @@
 		<module>spring-boot-mybatis</module>
     <module>spring-boot-mybatis-multidatasource</module>
     <module>spring-boot-scheduler</module>
+    <module>spring-boot-shiro</module>
   </modules>
 	
 </project>
