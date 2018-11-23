@@ -18,8 +18,8 @@ import java.util.Map;
 /**
  * 注解申明式是事务，待测试
  */
-//@Aspect
-//@Configuration
+@Aspect
+@Configuration
 public class TxAdviceInterceptor {
 
     private static final int TX_METHOD_TIMEOUT = 5;

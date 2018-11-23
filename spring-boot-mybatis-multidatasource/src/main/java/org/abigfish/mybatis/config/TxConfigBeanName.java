@@ -11,7 +11,7 @@ import java.util.Properties;
 
 import javax.annotation.Resource;
 
-@Component
+//@Component
 public class TxConfigBeanName {
 
     @Autowired

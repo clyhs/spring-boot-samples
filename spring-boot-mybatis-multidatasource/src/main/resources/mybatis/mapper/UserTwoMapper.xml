@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.abigfish.mybatis.mapper.UserTwoMapper" >
+<mapper namespace="org.abigfish.mybatis.dao.UserTwoMapper" >
     <resultMap id="BaseResultMap" type="org.abigfish.mybatis.entity.UserEntity" >
         <id column="id" property="id" jdbcType="BIGINT" />
         <result column="userName" property="userName" jdbcType="VARCHAR" />
