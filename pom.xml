@@ -49,5 +49,6 @@
 
 	<modules>
 		<module>spring-boot-helloworld</module>
+		<module>spring-boot-mongdb</module>
 	</modules>
 </project>
