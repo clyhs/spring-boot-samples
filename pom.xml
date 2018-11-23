@@ -51,6 +51,7 @@
 		<module>spring-boot-mongdb</module>
 		<module>spring-boot-mybatis</module>
     <module>spring-boot-mybatis-multidatasource</module>
+    <module>spring-boot-scheduler</module>
   </modules>
 	
 </project>
