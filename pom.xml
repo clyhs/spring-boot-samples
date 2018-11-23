@@ -54,6 +54,8 @@
     <module>spring-boot-scheduler</module>
     <module>spring-boot-shiro</module>
     <module>spring-boot-freemarker</module>
+    <module>spring-boot-dubbo-provider</module>
+    <module>spring-boot-dubbo-consumer</module>
   </modules>
 	
 </project>
