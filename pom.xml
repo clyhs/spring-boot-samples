@@ -56,6 +56,7 @@
     <module>spring-boot-freemarker</module>
     <module>spring-boot-dubbo-provider</module>
     <module>spring-boot-dubbo-consumer</module>
+    <module>spring-boot-thymeleaf</module>
   </modules>
 	
 </project>
