@@ -60,6 +60,7 @@
     <module>spring-boot-uploadfile</module>
     <module>spring-boot-actuator</module>
     <module>spring-boot-jpa</module>
+    <module>spring-boot-redis</module>
   </modules>
 	
 </project>
