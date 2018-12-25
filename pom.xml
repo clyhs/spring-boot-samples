@@ -65,6 +65,7 @@
 		<module>spring-boot-log4j2</module>
 		<module>spring-boot-war</module>
     <module>spring-boot-ali-nacos</module>
+    <module>spring-boot-shiro-jwt</module>
   </modules>
 
 </project>
