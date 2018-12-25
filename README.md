@@ -17,6 +17,7 @@
 *  spring-boot-scheduler
 *  spring-boot-shiro
 *  spring-boot-shiro-jwt
+  包括jwt,swagger2
 *  srping-boot-thymeleaf
 *  spring-boot-uploadfile
 *  sprign-boot-war
