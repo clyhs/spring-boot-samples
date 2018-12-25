@@ -16,6 +16,7 @@
 *  spring-boot-redis
 *  spring-boot-scheduler
 *  spring-boot-shiro
+*  spring-boot-shiro-jwt
 *  srping-boot-thymeleaf
 *  spring-boot-uploadfile
 *  sprign-boot-war
