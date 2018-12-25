@@ -7,7 +7,7 @@ spring:
       #//-与classpath 之间有空格
       schema: 
         - classpath:database/schema.sql 
-        - classpath:database/import.sql
+ #       - classpath:database/import.sql
       continue-on-error: false
       initialization-mode: always
       sql-script-encoding: utf-8
