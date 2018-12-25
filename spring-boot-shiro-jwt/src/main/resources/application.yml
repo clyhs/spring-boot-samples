@@ -1,0 +1,62 @@
+spring:
+    datasource:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/test
+      username: root
+      password: root
+      #//-与classpath 之间有空格
+      schema: 
+        - classpath:database/import.sql
+      continue-on-error: false
+      initialization-mode: always
+      sql-script-encoding: utf-8
+      druid: 
+        filters: stat
+        initial-size: 10
+        max-active: 20
+        min-idle: 8
+        web-stat-filter:
+          enabled: true
+          url-pattern: /*
+          exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+          session-stat-enable: true
+          session-stat-max-count: 100000
+          principal-session-name: admin
+          principal-cookie-name: admin
+          profile-enable: true
+        stat-view-servlet: 
+          nabled: true
+          url-pattern: /druid/*
+          reset-enable: true
+          login-username: admin
+          login-password: 111111
+          allow: 127.0.0.1
+          deny: 192.168.10.1
+        aop-patterns: org.abigfish.shiro.jwt.service.*
+        wall:
+          enabled: true
+          db-type: mysql
+          config:
+            alter-table-allow: false
+            truncate-allow: false
+            drop-table-allow: false
+            none-base-statement-allow: false
+            update-where-none-check: true
+            select-into-outfile-allow: false
+            metadata-allow: true
+          log-violation: true
+          throw-exception: true
+            
+      
+
+    jpa:
+      database: mysql
+      show-sql: true
+      hibernate:
+        ddl-auto: update
+        naming:
+          strategy: org.hibernate.cfg.DefaultComponentSafeNamingStrategy
+      properties:
+         hibernate:
+            dialect: org.abigfish.shiro.jwt.dialect.MySQL5DialectUTF8

@@ -55,7 +55,7 @@ public class IndexController {
     })
 	@GetMapping("/login/{username}/{password}")
 	public ResponseBean login(@PathVariable("username") String username, @PathVariable("password") String password) {
-		User userBean = userService.findByUserName(username);
+		User userBean = userService.findByUsername(username);
 		if (userBean.getPassword().equals(password)) {
 			return new ResponseBean(200, "Login success", JwtUtil.sign(username, password));
 		} else {

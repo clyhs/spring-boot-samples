@@ -42,7 +42,7 @@ public class MyRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String username = JwtUtil.getUsername(principals.toString());
-        User user = userService.findByUserName(username);
+        User user = userService.findByUsername(username);
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         //simpleAuthorizationInfo.addRole(user.getRole());
         //Set<String> permission = new HashSet<>(Arrays.asList(user.getPermission().split(",")));
@@ -62,7 +62,7 @@ public class MyRealm extends AuthorizingRealm {
             throw new AuthenticationException("token invalid");
         }
 
-        User user = userService.findByUserName(username);
+        User user = userService.findByUsername(username);
         if (user == null) {
             throw new AuthenticationException("User didn't existed!");
         }
