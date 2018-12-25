@@ -1,11 +1,16 @@
 spring:
     datasource:
+      driver-class-name: com.mysql.jdbc.Driver
       url: jdbc:mysql://localhost:3306/test
       username: root
       password: root
-      schema: database/import.sql
+      #//-与classpath 之间有空格
+      schema: 
+        - classpath:database/schema.sql 
+        - classpath:database/import.sql
+      continue-on-error: false
+      initialization-mode: always
       sql-script-encoding: utf-8
-      driver-class-name: com.mysql.jdbc.Driver
 
     jpa:
       database: mysql
@@ -16,7 +21,7 @@ spring:
           strategy: org.hibernate.cfg.DefaultComponentSafeNamingStrategy
       properties:
          hibernate:
-            dialect: org.hibernate.dialect.MySQL5Dialect
+            dialect: org.abigfish.shiro.config.MySQL5DialectUTF8
 
     thymeleaf:
        cache: false

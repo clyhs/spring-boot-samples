@@ -4,9 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Hello world!
+ * 
+ * @author abigfish
  *
+ * @date 2018年12月25日
  */
+
 @SpringBootApplication
 public class App 
 {
