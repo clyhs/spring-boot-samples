@@ -66,6 +66,7 @@
 		<module>spring-boot-war</module>
     <module>spring-boot-ali-nacos</module>
     <module>spring-boot-shiro-jwt</module>
+    <module>spring-boot-ibatis</module>
   </modules>
 
 </project>
