@@ -67,6 +67,7 @@
     <module>spring-boot-ali-nacos</module>
     <module>spring-boot-shiro-jwt</module>
     <module>spring-boot-ibatis</module>
+    <module>spring-boot-oauth2-jwt</module>
   </modules>
 
 </project>
