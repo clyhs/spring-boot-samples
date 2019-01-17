@@ -21,11 +21,13 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String input) {
 		User user = null;
+		
+		System.out.println(input);
 
 		if (input.contains("@"))
-			user = userRepository.findActiveByEmail(input);
+			user = userRepository.findByEmail(input);
 		else
-			user = userRepository.findActiveByUsername(input);
+			user = userRepository.findByUsername(input);
 
 		if (user == null)
 			throw new UsernameNotFoundException("Incorrect username, password or admin id.");

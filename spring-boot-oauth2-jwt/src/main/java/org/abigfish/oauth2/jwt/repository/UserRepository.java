@@ -14,10 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	@Query("SELECT u FROM User u WHERE (u.deletedOn > CURRENT_TIMESTAMP OR u.deletedOn IS NULL) AND u.username = :username")
-	User findActiveByUsername(@Param("username") String username);
+	//@Query("SELECT u FROM User u WHERE (u.deletedOn > CURRENT_TIMESTAMP OR u.deletedOn IS NULL) AND u.username = :username")
+	//User findActiveByUsername(@Param("username") String username);
 
-	@Query("SELECT u FROM User u WHERE (u.deletedOn > CURRENT_TIMESTAMP OR u.deletedOn IS NULL) AND u.email = :email")
-	User findActiveByEmail(@Param("email") String email);
+	//@Query("SELECT u FROM User u WHERE (u.deletedOn > CURRENT_TIMESTAMP OR u.deletedOn IS NULL) AND u.email = :email")
+	//User findActiveByEmail(@Param("email") String email);
 
+	User findByUsername(String username);
+
+	User findByEmail(String email);
 }

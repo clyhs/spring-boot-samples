@@ -15,7 +15,8 @@ pip install --upgrade httpie
 
 To get a JWT token use the following command (webapp = the name of the OAuth2 client):
 ```
-http --form POST webapp:@auth:9999/oauth/token grant_type=password username=user password=password
+http --form POST webapp:@localhost:9999/oauth/token grant_type=password username=admin password=password --ignore-stdin
+
 ```
 
 To access a resource use:

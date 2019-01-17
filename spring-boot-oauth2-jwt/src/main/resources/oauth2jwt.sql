@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50723
 File Encoding         : 65001
 
-Date: 2019-01-17 09:16:33
+Date: 2019-01-17 16:11:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -143,5 +143,5 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'admin', '{bcrypt}$2a$10$EOs8VROb14e7ZnydvXECA.4LoIhPOoFHKvVF/iBZ/ker17Eocz4Vi', 'admin@example.com', '', '', '', '', '1970-01-01 00:00:00', '1970-01-01 00:00:00', null, null, null, '0');
-INSERT INTO `user` VALUES ('2', 'user', '{bcrypt}$2a$10$EOs8VROb14e7ZnydvXECA.4LoIhPOoFHKvVF/iBZ/ker17Eocz4Vi', 'user@example.com', '', '', '', '', '1970-01-01 00:00:00', '1970-01-01 00:00:00', null, null, null, '0');
+INSERT INTO `user` VALUES ('1', 'admin', '$2a$10$g3TbNB1N1xJzzHzM8x.DeO8Tp1J2UJAr7Ol5WMc0PztG/09xAagJW', 'admin@example.com', '', '', '', '', '1970-01-01 00:00:00', '1970-01-01 00:00:00', null, null, null, '1');
+INSERT INTO `user` VALUES ('2', 'user', '$2a$10$g3TbNB1N1xJzzHzM8x.DeO8Tp1J2UJAr7Ol5WMc0PztG/09xAagJW', 'user@example.com', '', '', '', '', '1970-01-01 00:00:00', '1970-01-01 00:00:00', null, null, null, '0');
