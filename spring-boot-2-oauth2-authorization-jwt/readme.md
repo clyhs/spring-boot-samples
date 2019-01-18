@@ -1,11 +1,23 @@
+### curl
+```
+curl adminapp:password@localhost:9999/oauth/token -d grant_type=password -d username=admin -d password=password
+```
+
+{"access_token":...}
+
+```
+curl http://localhost:8080/users -H "Authorization: Bearer $token"
+```
+
+```
+curl adminapp:password@localhost:9999/oauth/token -d grant_type=refresh_token -d refresh_token=$refresh_token
+```
+
+### httpie
+
 http --form POST adminapp:password@localhost:9999/oauth/token grant_type=password username=admin password=password  --ignore-stdin
 
-{"access_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsibXMvYWRtaW4iLCJtcy91c2VyIiwibXcvYWRtaW5hcHAiXSwidXNlcl9uYW1lIjoiYWRtaW4iLCJzY29wZSI6WyJyb2xlX2FkbWluIl0sImV4cCI6MTU0NzcxNTU4MywiYXV0aG9yaXRpZXMiOlsicm9sZV9hZG1pbiIsImNhbl91cGRhdGVfdXNlciIsImNhbl9yZWFkX3VzZXIiLCJjYW5fY3JlYXRlX3VzZXIiLCJjYW5fZGVsZXRlX3VzZXIiXSwianRpIjoiYjA5OGU2NGUtNmQ3Ny00M2RiLTkyMjQtMzY1ZDg0YzhlNmNhIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsImNsaWVudF9pZCI6ImFkbWluYXBwIn0.UvMKvZmjQOOW7ZaxOH1IidYAEVAnnhzoySofYq_bM5EwPpcQ70NQT6IxTM5MBowNzfHW0Q_Zlm98FXpn9eyT-OEWYqMfVzlXfrMDQ4OUTScM_8v-lG2ySIsY3MNy8xUcMAljLUpTBATd26Ivb51oUIRDuzKmFbqLZj02Ps4uwahoTvTLR269aqj4QUI9t5-u79BYVYWmOUkwgKyW-PDym1Q6ydDCMAUu6vgk_VUcFG7aaB9rf6y5P-d884WHRZ9E6deX4277vUm68GYiGVVSo7bdPRZr8qBEXxgmxHeOKHSKWEqQ8ocIEWS_rDhxv_QbSqrGA3m4S6JP4oJfUy_8jw","token_type":"bearer","refresh_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsibXMvYWRtaW4iLCJtcy91c2VyIiwibXcvYWRtaW5hcHAiXSwidXNlcl9uYW1lIjoiYWRtaW4iLCJzY29wZSI6WyJyb2xlX2FkbWluIl0sImF0aSI6ImIwOThlNjRlLTZkNzctNDNkYi05MjI0LTM2NWQ4NGM4ZTZjYSIsImV4cCI6MTU0NzcxODI4MywiYXV0aG9yaXRpZXMiOlsicm9sZV9hZG1pbiIsImNhbl91cGRhdGVfdXNlciIsImNhbl9yZWFkX3VzZXIiLCJjYW5fY3JlYXRlX3VzZXIiLCJjYW5fZGVsZXRlX3VzZXIiXSwianRpIjoiNzIwMDgzMjItYWU0ZC00ZGZjLTkwYTgtZjNjYjdkYzE1MTQ5IiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsImNsaWVudF9pZCI6ImFkbWluYXBwIn0.X_eJxLRo9quBO-xiTFnWBetuBth6J4ycntPDtYhHU_nShqAcuByHX5-hlndiEoupBHne33nNuPteGJfaot2RmNyoQHLK_KY-Jr9L1dITkYC9anO8CNNDyCRtZLhDZvpGmu6-Kp4NK9ffKN8ujskmYzh1s9hcnDS-AV_xBriItleyQss2IoCQ3Gv9IEDH5GvcVs0dmyzLS00YACUlkFQ9vcWSdHYxMzHifE7xV5IIHDLQHbfG-MhVCMzaQKkSOAtpLMmu5hzyx6n-d6jhP8ma-FE9UOAfvDl-FWSJ29HvqEDIhOa2xm2vUhknfg0Os9ru2ySYf7GNjQdyqbOgKRTU-A","expires_in":899,"scope":"role_admin","email":"admin@example.com","jti":"b098e64e-6d77-43db-9224-365d84c8e6ca"}
-
-
-
-
-http localhost:8080/users 'Authorization: Bearer '$ACCESS_TOKEN
+http localhost:8080/users Authorization:Bearer $token
 
 http --form POST adminapp:password@localhost:9999/oauth/token grant_type=refresh_token refresh_token=$REFRESH_TOKEN
 
