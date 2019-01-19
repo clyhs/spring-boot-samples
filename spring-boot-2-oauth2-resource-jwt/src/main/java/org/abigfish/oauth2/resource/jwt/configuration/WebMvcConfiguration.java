@@ -25,6 +25,10 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 		argumentResolvers.add(currentUserHandlerMethodArgumentResolver());
 	}
 
+	/**
+	 * 自定义参数解析器
+	 * @return
+	 */
 	@Bean
 	public HandlerMethodArgumentResolver currentUserHandlerMethodArgumentResolver() {
 		return new HandlerMethodArgumentResolver() {
