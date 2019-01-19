@@ -5,10 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -42,6 +44,17 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.authenticationEntryPoint(
 						(request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
 				.and().authorizeRequests().antMatchers("/**").authenticated().and().httpBasic();
+		// @formatter:off
+//        http.authorizeRequests()
+//                .antMatchers(HttpMethod.OPTIONS).permitAll()
+//                .antMatchers("/login").permitAll()
+//                .antMatchers("/oauth/token").permitAll()
+//                .anyRequest().authenticated()
+//                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                .and().formLogin().permitAll()
+//                .and().logout().permitAll()
+//                .and().csrf().disable();
+        // @formatter:on
 	}
 
 	@Override
