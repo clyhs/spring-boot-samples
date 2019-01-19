@@ -19,6 +19,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
+import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -74,7 +75,17 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+		//从数据库读取clientId secrect
 		clients.jdbc(dataSource).passwordEncoder(passwordEncoder);
+		//也可以从配置文件application.xml读取配置的
+//		InMemoryClientDetailsServiceBuilder build = clients.inMemory();
+//		build.withClient(config.getClientId())
+//        .secret(passwordEncoder.encode(config.getClientSecret()))
+//        .accessTokenValiditySeconds(config.getAccessTokenValiditySeconds())
+//        .refreshTokenValiditySeconds(60 * 60 * 24 * 15)
+//        .authorizedGrantTypes("refresh_token", "password", "authorization_code")//OAuth2支持的验证模式
+//        .redirectUris("http://abigfish.net")
+//        .scopes("all");
 	}
 
 	@Bean
@@ -98,13 +109,18 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 	@Bean
 	public JwtAccessTokenConverter jwtAccessTokenConverter() {
 		JwtAccessTokenConverter converter = new CustomTokenEnhancer();
+		//JWT认证，提供了对称加密以及非对称的实现。
+		//非对称加密
 		converter.setKeyPair(
 				new KeyStoreKeyFactory(new ClassPathResource("jwt.jks"), "password".toCharArray()).getKeyPair("jwt"));
+		//对称加密
+		//converter.setSigningKey("111111");
 		return converter;
 	}
 
 	/*
 	 * Add custom user principal information to the JWT token
+	 * JWT中，需要在token中携带额外的信息，这样可以在服务之间共享部分用户信息,比如共享用户email
 	 */
 	class CustomTokenEnhancer extends JwtAccessTokenConverter {
 		@Override
@@ -122,6 +138,7 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 		}
 	}
 
+	//映射用户角色到权限范围
 	class CustomOauth2RequestFactory extends DefaultOAuth2RequestFactory {
 		@Autowired
 		private TokenStore tokenStore;
