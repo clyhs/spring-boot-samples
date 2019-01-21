@@ -111,8 +111,10 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 		JwtAccessTokenConverter converter = new CustomTokenEnhancer();
 		//JWT认证，提供了对称加密以及非对称的实现。
 		//非对称加密
+		
 		converter.setKeyPair(
 				new KeyStoreKeyFactory(new ClassPathResource("jwt.jks"), "password".toCharArray()).getKeyPair("jwt"));
+		
 		//对称加密
 		//converter.setSigningKey("111111");
 		return converter;

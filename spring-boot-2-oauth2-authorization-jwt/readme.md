@@ -40,3 +40,5 @@ http localhost:8080/users Authorization:Bearer $token
 
 http --form POST adminapp:password@localhost:9999/oauth/token grant_type=refresh_token refresh_token=$REFRESH_TOKEN
 ```
+
+

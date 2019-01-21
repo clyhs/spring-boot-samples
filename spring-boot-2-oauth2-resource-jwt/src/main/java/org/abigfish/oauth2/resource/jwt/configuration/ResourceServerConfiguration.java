@@ -44,7 +44,11 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 		 * 我们可以为每一个Resource Server（一个微服务实例）设置一个resourceid。
 		 * 再给client授权的时候，可以设置这个client可以访问哪一些微服务实例，
 		 * 如果没设置，就是对所有的resource都有访问权限。
+		 * clientId=adminapp,role=role_admin,role_superadmin 配置了只能访问mw/adminapp,ms/admin,ms/user的资源,
+		 * 无法访问mw/adminapp2 Invalid token does not contain resource id (mw/adminapp2)
+		 * 
 		 */
+		//resources.resourceId("mw/adminapp2").tokenStore(tokenStore);
 		resources.resourceId("mw/adminapp").tokenStore(tokenStore);
 	}
 
