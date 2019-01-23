@@ -13,18 +13,18 @@
 *  spring-boot-mongdb
 *  spring-boot-mybatis
 *  spring-boot-mybatis-multidatasource
->  包括atomikos多数据源事务
+*包括atomikos多数据源事务*
 *  spring-boot-redis
 *  spring-boot-scheduler
 *  spring-boot-shiro
->  包括jpa 数据库查询
+*包括jpa 数据库查询*
 *  spring-boot-shiro-jwt
->  包括jwt,swagger2,druid监控
+*包括jwt,swagger2,druid监控*
 *  spring-boot-thymeleaf
 *  spring-boot-uploadfile
 *  sprigg-boot-war
 *  spring-boot-oauth2-jwt
->  springboot 1.5.x
+*springboot 1.5.x*
 *  spring-boot-2-oauth2-authorization-jwt
 *  spring-boot-2-oauth2-resource-jwt
 *  spring-boot-websocket
