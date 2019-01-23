@@ -70,6 +70,7 @@
     <module>spring-boot-oauth2-jwt</module>
     <module>spring-boot-2-oauth2-authorization-jwt</module>
     <module>spring-boot-2-oauth2-resource-jwt</module>
+    <module>spring-boot-websocket</module>
   </modules>
 
 </project>

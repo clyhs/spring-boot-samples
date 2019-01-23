@@ -1,5 +1,5 @@
-# spring-boot-samples
-  spring-boot2集成各种组件
+# spring-boot2-samples
+  spring-boot 2.0.3.RELEASE 集成各种组件
 
 *  spring-boot-activemq
 *  spring-boot-actuator
@@ -20,6 +20,11 @@
 >  包括jpa 数据库查询
 *  spring-boot-shiro-jwt
 >  包括jwt,swagger2,druid监控
-*  srping-boot-thymeleaf
+*  spring-boot-thymeleaf
 *  spring-boot-uploadfile
-*  sprign-boot-war
+*  sprigg-boot-war
+*  spring-boot-oauth2-jwt
+>  springboot 1.5.x
+*  spring-boot-2-oauth2-authorization-jwt
+*  spring-boot-2-oauth2-resource-jwt
+*  spring-boot-websocket
