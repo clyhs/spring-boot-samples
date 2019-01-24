@@ -71,6 +71,7 @@
     <module>spring-boot-2-oauth2-authorization-jwt</module>
     <module>spring-boot-2-oauth2-resource-jwt</module>
     <module>spring-boot-websocket</module>
+    <module>spring-boot-webflux</module>
   </modules>
 
 </project>
