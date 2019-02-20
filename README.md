@@ -28,3 +28,6 @@
 *  spring-boot-2-oauth2-authorization-jwt
 *  spring-boot-2-oauth2-resource-jwt
 *  spring-boot-websocket
+*  spring-boot-1-jediscluster
+*  spring-boot-2-rediscluster
+*springboot1.x\2.x的redis有区别，1.x采用jedis,2.x采用lettuce*
