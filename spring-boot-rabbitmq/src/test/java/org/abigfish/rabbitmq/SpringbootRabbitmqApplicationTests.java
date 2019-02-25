@@ -22,31 +22,31 @@ public class SpringbootRabbitmqApplicationTests {
     @Autowired
     private DirectSender directSender;
  
-    /**
-     * Fanout测试
-     * @throws Exception
-     */
-    @Test
-    public void testFanout() throws Exception {
-        User user=new User();
-        user.setId("1");
-        user.setName("pwl");
-        fanoutSender.send(user);
-    }
-// 
-// 
-// 
 //    /**
-//     * TOPIC测试
+//     * Fanout测试
 //     * @throws Exception
 //     */
 //    @Test
-//    public void testTopic() throws Exception {
+//    public void testFanout() throws Exception {
 //        User user=new User();
 //        user.setId("1");
-//        user.setName("pwl");
-//        topicSender.send(user);
+//        user.setName("abigfish");
+//        fanoutSender.send(user);
 //    }
+// 
+// 
+// 
+    /**
+     * TOPIC测试
+     * @throws Exception
+     */
+    @Test
+    public void testTopic() throws Exception {
+        User user=new User();
+        user.setId("1");
+        user.setName("abigfish");
+        topicSender.send(user);
+    }
 // 
 //    /**
 //     * DIRECT测试
@@ -56,7 +56,7 @@ public class SpringbootRabbitmqApplicationTests {
 //    public void testDirect() throws Exception {
 //        User user=new User();
 //        user.setId("1");
-//        user.setName("pwl");
+//        user.setName("abigfish");
 //        directSender.send(user);
 //    }
  

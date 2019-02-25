@@ -18,12 +18,16 @@ public class RabbitConfig {
  
     //redirect模式
     public static final String DIRECT_QUEUE1 = "direct.queue1";
-    public static final String DIRECT_EXCHANGE = "direct.exchange";
     public static final String DIRECT_QUEUE2 ="direct.queue2" ;
+    public static final String DIRECT_EXCHANGE = "direct.exchange";
+    
  
     /**
      * Topic模式
-     *
+     *topic 交换器通过模式匹配分配消息的路由键属性，
+     *将路由键和某个模式进行匹配，此时队列需要绑定到一个模式上。
+     *它将路由键和绑定键的字符串切分成单词，这些单词之间用点隔开。
+     *它同样也会识别两个通配符：符号“#”和符号“*”。#匹配0个或多个单词，*匹配一个单词
      * @return
      */
     @Bean
@@ -43,12 +47,12 @@ public class RabbitConfig {
  
     @Bean
     public Binding topicBinding1() {
-		return BindingBuilder.bind(topicQueue1()).to(topicExchange()).with("lzc.message");
+		return BindingBuilder.bind(topicQueue1()).to(topicExchange()).with("abigfish.message");
     }
  
     @Bean
     public Binding topicBinding2() {
-        return BindingBuilder.bind(topicQueue2()).to(topicExchange()).with("lzc.#");
+        return BindingBuilder.bind(topicQueue2()).to(topicExchange()).with("abigfish.#");
     }
  
  
@@ -84,7 +88,8 @@ public class RabbitConfig {
  
     /**
      * direct模式
-     * 消息中的路由键（routing key）如果和 Binding 中的 binding key 一致， 交换器就将消息发到对应的队列中。路由键与队列名完全匹配
+     * 消息中的路由键（routing key）如果和 Binding 中的 binding key 一致，
+     *  交换器就将消息发到对应的队列中。路由键与队列名完全匹配
      * @return
      */
     @Bean
@@ -104,12 +109,12 @@ public class RabbitConfig {
  
     @Bean
     public Binding directBinding1() {
-        return BindingBuilder.bind(directQueue1()).to(directExchange()).with("direct.pwl");
+        return BindingBuilder.bind(directQueue1()).to(directExchange()).with("direct.abigfish");
     }
     
     @Bean
     public Binding directBinding2() {
-        return BindingBuilder.bind(directQueue1()).to(directExchange()).with("direct.pwl2");
+        return BindingBuilder.bind(directQueue1()).to(directExchange()).with("direct.abigfish2");
     }
  
 }

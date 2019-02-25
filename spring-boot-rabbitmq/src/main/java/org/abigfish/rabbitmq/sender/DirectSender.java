@@ -13,6 +13,6 @@ public class DirectSender {
     private RabbitTemplate rabbitTemplate;
  
     public void send(User user) {
-        this.rabbitTemplate.convertAndSend(RabbitConfig.DIRECT_EXCHANGE, "direct.pwl", user);
+        this.rabbitTemplate.convertAndSend(RabbitConfig.DIRECT_EXCHANGE, "direct.abigfish", user);
     }
 }
