@@ -56,6 +56,12 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 
 	@Autowired
 	private ClientDetailsService clientDetailsService;
+	
+	@Autowired
+	private TokenStore tokenStore;
+	
+	@Autowired
+	private JwtAccessTokenConverter jwtAccessTokenConverter;
 
 	@Autowired
 	@Qualifier("authenticationManagerBean")
@@ -68,10 +74,10 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 		return requestFactory;
 	}
 
-	@Bean
-	public TokenStore tokenStore() {
-		return new JwtTokenStore(jwtAccessTokenConverter());
-	}
+//	@Bean
+//	public TokenStore tokenStore() {
+//		return new JwtTokenStore(jwtAccessTokenConverter());
+//	}
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -100,48 +106,49 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-		endpoints.tokenStore(tokenStore()).tokenEnhancer(jwtAccessTokenConverter())
+		endpoints.tokenStore(tokenStore).tokenEnhancer(jwtAccessTokenConverter)
 				.authenticationManager(authenticationManager).userDetailsService(userDetailsService);
 		if (checkUserScopes)
 			endpoints.requestFactory(requestFactory());
 	}
 
-	@Bean
-	public JwtAccessTokenConverter jwtAccessTokenConverter() {
-		JwtAccessTokenConverter converter = new CustomTokenEnhancer();
-		//JWT认证，提供了对称加密以及非对称的实现。
-		//非对称加密
-		
-		converter.setKeyPair(
-				new KeyStoreKeyFactory(new ClassPathResource("jwt.jks"), "password".toCharArray()).getKeyPair("jwt"));
-		
-		//对称加密
-		//converter.setSigningKey("111111");
-		return converter;
-	}
+//	@Bean
+//	public JwtAccessTokenConverter jwtAccessTokenConverter() {
+//		JwtAccessTokenConverter converter = new CustomTokenEnhancer();
+//		//JWT认证，提供了对称加密以及非对称的实现。
+//		//非对称加密
+//		
+//		converter.setKeyPair(
+//				new KeyStoreKeyFactory(new ClassPathResource("jwt.jks"), "password".toCharArray()).getKeyPair("jwt"));
+//		
+//		//对称加密
+//		//converter.setSigningKey("111111");
+//		return converter;
+//	}
 
 	/*
 	 * Add custom user principal information to the JWT token
 	 * JWT中，需要在token中携带额外的信息，这样可以在服务之间共享部分用户信息,比如共享用户email
 	 */
-	class CustomTokenEnhancer extends JwtAccessTokenConverter {
-		@Override
-		public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
-			User user = (User) authentication.getPrincipal();
-
-			Map<String, Object> info = new LinkedHashMap<String, Object>(accessToken.getAdditionalInformation());
-
-			info.put("email", user.getEmail());
-
-			DefaultOAuth2AccessToken customAccessToken = new DefaultOAuth2AccessToken(accessToken);
-			customAccessToken.setAdditionalInformation(info);
-
-			return super.enhance(customAccessToken, authentication);
-		}
-	}
+//	class CustomTokenEnhancer extends JwtAccessTokenConverter {
+//		@Override
+//		public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
+//			User user = (User) authentication.getPrincipal();
+//
+//			Map<String, Object> info = new LinkedHashMap<String, Object>(accessToken.getAdditionalInformation());
+//
+//			info.put("email", user.getEmail());
+//
+//			DefaultOAuth2AccessToken customAccessToken = new DefaultOAuth2AccessToken(accessToken);
+//			customAccessToken.setAdditionalInformation(info);
+//
+//			return super.enhance(customAccessToken, authentication);
+//		}
+//	}
 
 	//映射用户角色到权限范围
 	class CustomOauth2RequestFactory extends DefaultOAuth2RequestFactory {
+		
 		@Autowired
 		private TokenStore tokenStore;
 
