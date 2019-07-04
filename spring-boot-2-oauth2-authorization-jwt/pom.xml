@@ -40,7 +40,7 @@
 			    </exclusion>
 			</exclusions>
 		</dependency>
-		
+		<!--解决 NoSuchMethodError: org.springframework.data.redis.connection.RedisConnection.set([B[B)V -->
 		<dependency>
 			<groupId>org.springframework.security.oauth</groupId>
 			<artifactId>spring-security-oauth2</artifactId>
