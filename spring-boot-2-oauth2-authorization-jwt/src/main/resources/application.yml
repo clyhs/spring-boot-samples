@@ -33,7 +33,7 @@ security:
   oauth2:
     token:
       store:
-        type: jwt
+        type: redis 
         
 
 check-user-scopes: true

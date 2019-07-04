@@ -106,8 +106,13 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-		endpoints.tokenStore(tokenStore).tokenEnhancer(jwtAccessTokenConverter)
+		endpoints.tokenStore(tokenStore)
 				.authenticationManager(authenticationManager).userDetailsService(userDetailsService);
+		
+		if(null!=jwtAccessTokenConverter){
+			endpoints.tokenEnhancer(jwtAccessTokenConverter);
+		}
+		
 		if (checkUserScopes)
 			endpoints.requestFactory(requestFactory());
 	}
