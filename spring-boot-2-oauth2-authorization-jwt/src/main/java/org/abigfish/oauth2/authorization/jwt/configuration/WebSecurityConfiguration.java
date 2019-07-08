@@ -40,20 +40,25 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	 */
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().exceptionHandling()
-				.authenticationEntryPoint(
-						(request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
-				.and().authorizeRequests().antMatchers("/**").authenticated().and().httpBasic();
+//		http.csrf().disable().exceptionHandling()
+//				.authenticationEntryPoint(
+//						(request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+//				.and().authorizeRequests().antMatchers("/**").authenticated().and().httpBasic();
+		
+
+		
 		// @formatter:off
-//        http.authorizeRequests()
-//                .antMatchers(HttpMethod.OPTIONS).permitAll()
-//                .antMatchers("/login").permitAll()
-//                .antMatchers("/oauth/token").permitAll()
-//                .anyRequest().authenticated()
-//                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                .and().formLogin().permitAll()
-//                .and().logout().permitAll()
-//                .and().csrf().disable();
+        http.exceptionHandling()
+		    .authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+            .and().authorizeRequests()
+                .antMatchers(HttpMethod.OPTIONS).permitAll()
+                .antMatchers("/login","/oauth/authorize").permitAll()
+                .antMatchers("/oauth/token").permitAll()
+                .anyRequest().authenticated()
+                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and().formLogin().permitAll()
+                .and().logout().permitAll()
+                .and().csrf().disable();
         // @formatter:on
 	}
 
