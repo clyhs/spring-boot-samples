@@ -45,8 +45,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 						(request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
 				.and()
 				.authorizeRequests()
-				.antMatchers("/**")
-				.authenticated().and().httpBasic();
+				.antMatchers(HttpMethod.OPTIONS).permitAll()
+				.antMatchers("/login","/oauth/authorize").permitAll()
+				.antMatchers("/oauth/token").permitAll()
+				.anyRequest().authenticated()
+				.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				.and().formLogin().permitAll()
+				.and().logout().permitAll()
+				.and().httpBasic();
 		
 
 		
