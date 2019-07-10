@@ -76,6 +76,7 @@
 		<module>spring-boot-2-rediscluster</module>
         <module>spring-boot-1-elastic-job</module>
     <module>spring-boot-rabbitmq</module>
+    <module>spring-boot-docker</module>
   </modules>
 
 </project>
