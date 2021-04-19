@@ -77,6 +77,8 @@
         <module>spring-boot-1-elastic-job</module>
     <module>spring-boot-rabbitmq</module>
     <module>spring-boot-docker</module>
-  </modules>
+    <module></module>  <module>spring-boot-2-nettyserver</module>
+  <module>spring-boot-2-nettyclient</module>
+	</modules>
 
 </project>
