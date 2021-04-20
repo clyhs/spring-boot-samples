@@ -38,7 +38,7 @@ public class HeartBeatSimpleHandler extends SimpleChannelInboundHandler<TcpMessa
             if (idleStateEvent.state() == IdleState.READER_IDLE) {
                 LOGGER.info("已经5秒没有收到信息！");
                 //向客户端发送消息
-                ctx.writeAndFlush(HEART_BEAT).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
+                ctx.writeAndFlush(HEART_BEAT.duplicate()).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
             }
         }else {
         	super.userEventTriggered(ctx, evt);
@@ -50,7 +50,7 @@ public class HeartBeatSimpleHandler extends SimpleChannelInboundHandler<TcpMessa
     protected void channelRead0(ChannelHandlerContext ctx, TcpMessage tm) throws Exception {
         LOGGER.info("收到tm={}", tm.getContent());
         //我们调用writeAndFlush（Object）来逐字写入接收到的消息并刷新线路
-        ctx.writeAndFlush(tm);
+        //ctx.writeAndFlush(tm);
         //保存客户端与 Channel 之间的关系
         NettySocketHolder.put(tm.getId(), (NioSocketChannel) ctx.channel());
     }
