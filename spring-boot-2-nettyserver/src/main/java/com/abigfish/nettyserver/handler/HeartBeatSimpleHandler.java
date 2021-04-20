@@ -48,7 +48,7 @@ public class HeartBeatSimpleHandler extends SimpleChannelInboundHandler<TcpMessa
     protected void channelRead0(ChannelHandlerContext ctx, TcpMessage tm) throws Exception {
         LOGGER.info("收到tm={}", tm);
         //我们调用writeAndFlush（Object）来逐字写入接收到的消息并刷新线路
-        //ctx.writeAndFlush(customProtocol);
+        ctx.writeAndFlush(tm);
         //保存客户端与 Channel 之间的关系
         NettySocketHolder.put(tm.getId(), (NioSocketChannel) ctx.channel());
     }
