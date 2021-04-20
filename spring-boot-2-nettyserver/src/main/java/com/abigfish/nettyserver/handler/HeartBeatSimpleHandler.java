@@ -40,13 +40,15 @@ public class HeartBeatSimpleHandler extends SimpleChannelInboundHandler<TcpMessa
                 //向客户端发送消息
                 ctx.writeAndFlush(HEART_BEAT).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
             }
+        }else {
+        	super.userEventTriggered(ctx, evt);
         }
-        super.userEventTriggered(ctx, evt);
+        
     }
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, TcpMessage tm) throws Exception {
-        LOGGER.info("收到tm={}", tm);
+        LOGGER.info("收到tm={}", tm.getContent());
         //我们调用writeAndFlush（Object）来逐字写入接收到的消息并刷新线路
         ctx.writeAndFlush(tm);
         //保存客户端与 Channel 之间的关系

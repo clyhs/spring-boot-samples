@@ -14,7 +14,7 @@ import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.CharsetUtil;
 
-public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
+public class EchoClientHandler extends SimpleChannelInboundHandler<TcpMessage> {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(EchoClientHandler.class);
 
@@ -28,8 +28,10 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
                 ctx.writeAndFlush(heartBeat).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
             }
 
+        }else {
+        	super.userEventTriggered(ctx, evt);
         }
-        super.userEventTriggered(ctx, evt);
+        
     }
 
     /**
@@ -39,8 +41,8 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
      * @throws Exception
      */
     @Override
-    protected void channelRead0(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) throws Exception {
+    protected void channelRead0(ChannelHandlerContext channelHandlerContext, TcpMessage tm) throws Exception {
         //从服务端收到消息时被调用
-        LOGGER.info("客户端收到消息={}", byteBuf.toString(CharsetUtil.UTF_8));
+        LOGGER.info("客户端收到消息={}", tm.getContent());
     }
 }
