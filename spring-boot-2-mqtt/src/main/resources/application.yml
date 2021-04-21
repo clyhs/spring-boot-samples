@@ -9,7 +9,7 @@ server:
   port: 8080
   
 mqtt:
-  url: tcp://192.168.0.112:1884
+  url: tcp://192.168.0.105:1884
   username: admin
   password: 123
   clientId: client-01
