@@ -8,4 +8,6 @@ spring:
         max-connections: 50
       packages:
         trust-all: true
+    jms:
+      pub-sub-domain: true
 

@@ -6,4 +6,5 @@ public interface IMessageProvider {
 	
 	public void sender(Message obj);
 
+	public void sendTopic(String msg);
 }
