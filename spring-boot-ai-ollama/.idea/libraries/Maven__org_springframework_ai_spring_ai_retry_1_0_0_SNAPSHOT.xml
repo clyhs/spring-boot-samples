@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.springframework.ai:spring-ai-retry:1.0.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/ai/spring-ai-retry/1.0.0-SNAPSHOT/spring-ai-retry-1.0.0-20240618.075853-300.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/ai/spring-ai-retry/1.0.0-SNAPSHOT/spring-ai-retry-1.0.0-20240618.075853-300-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/ai/spring-ai-retry/1.0.0-SNAPSHOT/spring-ai-retry-1.0.0-20240618.075853-300-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

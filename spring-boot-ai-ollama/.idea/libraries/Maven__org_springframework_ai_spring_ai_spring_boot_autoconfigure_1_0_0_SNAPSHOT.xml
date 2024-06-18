@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.springframework.ai:spring-ai-spring-boot-autoconfigure:1.0.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/ai/spring-ai-spring-boot-autoconfigure/1.0.0-SNAPSHOT/spring-ai-spring-boot-autoconfigure-1.0.0-20240618.073439-242.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/ai/spring-ai-spring-boot-autoconfigure/1.0.0-SNAPSHOT/spring-ai-spring-boot-autoconfigure-1.0.0-20240618.073439-242-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/ai/spring-ai-spring-boot-autoconfigure/1.0.0-SNAPSHOT/spring-ai-spring-boot-autoconfigure-1.0.0-20240618.073439-242-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
