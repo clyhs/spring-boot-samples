@@ -1,6 +1,7 @@
 package org.abigfish.milvus;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,10 @@ import com.alibaba.fastjson.JSONObject;
 
 import io.milvus.v2.client.ConnectConfig;
 import io.milvus.v2.client.MilvusClientV2;
+import io.milvus.v2.common.DataType;
+import io.milvus.v2.common.IndexParam;
+import io.milvus.v2.common.IndexParam.IndexType;
+import io.milvus.v2.service.collection.request.AddFieldReq;
 import io.milvus.v2.service.collection.request.CreateCollectionReq;
 import io.milvus.v2.service.partition.request.CreatePartitionReq;
 import io.milvus.v2.service.vector.request.DeleteReq;
@@ -19,7 +24,7 @@ import io.milvus.v2.service.vector.response.UpsertResp;
 
 public class CreateDatabase {
 	
-	private static String collectionName = "vector_store_6";
+	private static String collectionName = "vector_store_7";
 
     public static void main(String[] args) {
         // 1. Connect to Milvus server
@@ -30,6 +35,8 @@ public class CreateDatabase {
         MilvusClientV2 client = new MilvusClientV2(connectConfig);
 
         createDatabase(client);
+        
+        
         /*
         insertEntity(client);
         insertPartitions(client);
@@ -171,6 +178,7 @@ public class CreateDatabase {
 
     public static void createDatabase(MilvusClientV2 client){
         // 2. Create a collection in quick setup mode
+    	/*
         CreateCollectionReq quickSetupReq = CreateCollectionReq.builder()
                 .collectionName(collectionName)
                 .dimension(768)
@@ -178,6 +186,43 @@ public class CreateDatabase {
                 .build();
 
         client.createCollection(quickSetupReq);
+        */
+    	/*
+    	CreateCollectionReq.CollectionSchema collectionSchema = client.createSchema();
+    	collectionSchema.addField(AddFieldReq.builder().fieldName("doc_id").dataType(DataType.VarChar).maxLength(64).isPrimaryKey(Boolean.TRUE).autoID(Boolean.FALSE).description("doc_id").build());
+    	collectionSchema.addField(AddFieldReq.builder().fieldName("content").dataType(DataType.VarChar).build());
+    	collectionSchema.addField(AddFieldReq.builder().fieldName("metadata").dataType(DataType.JSON).build());
+    	collectionSchema.addField(AddFieldReq.builder().fieldName("embedding").dataType(DataType.FloatVector).dimension(768).build());
+
+    	IndexParam indexParam = IndexParam.builder()
+    	        .fieldName("embedding")
+    	        .metricType(IndexParam.MetricType.IP)
+    	        .indexType(IndexType.FLAT)
+    	        .build();
+    	CreateCollectionReq createCollectionReq = CreateCollectionReq.builder()
+    	        .collectionName(collectionName)
+    	        .collectionSchema(collectionSchema)
+    	        .indexParams(Collections.singletonList(indexParam))
+    	        .build();
+    	client.createCollection(createCollectionReq);*/
+    	
+    	CreateCollectionReq.CollectionSchema collectionSchema = client.createSchema();
+    	collectionSchema.addField(AddFieldReq.builder().fieldName("doc_id").dataType(DataType.VarChar).maxLength(64).isPrimaryKey(Boolean.TRUE).autoID(Boolean.FALSE).description("doc_id").build());
+    	collectionSchema.addField(AddFieldReq.builder().fieldName("content").dataType(DataType.VarChar).build());
+    	collectionSchema.addField(AddFieldReq.builder().fieldName("metadata").dataType(DataType.JSON).build());
+    	collectionSchema.addField(AddFieldReq.builder().fieldName("embedding").dataType(DataType.FloatVector).dimension(5120).build());
+
+    	IndexParam indexParam = IndexParam.builder()
+    	        .fieldName("embedding")
+    	        .metricType(IndexParam.MetricType.IP)
+    	        .indexType(IndexType.FLAT)
+    	        .build();
+    	CreateCollectionReq createCollectionReq = CreateCollectionReq.builder()
+    	        .collectionName(collectionName)
+    	        .collectionSchema(collectionSchema)
+    	        .indexParams(Collections.singletonList(indexParam))
+    	        .build();
+    	client.createCollection(createCollectionReq);
     }
 
 
