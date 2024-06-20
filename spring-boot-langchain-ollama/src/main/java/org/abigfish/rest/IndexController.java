@@ -1,5 +1,6 @@
 package org.abigfish.rest;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class IndexController {
 	}
 	
 	@GetMapping("/chat")
-	public ResponseEntity chat(@RequestParam String message) {
+	public ResponseEntity chat(@RequestParam String message) throws UnsupportedEncodingException {
 		return ResponseEntity.ok(documentService.chat(message));
 	}
 

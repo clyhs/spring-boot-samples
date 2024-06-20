@@ -4,6 +4,7 @@ import static dev.langchain4j.data.document.loader.FileSystemDocumentLoader.load
 import static java.util.stream.Collectors.joining;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,7 +69,7 @@ public class DocumentService {
 		return relevant;
 	}
 	
-	public String chat(String message) {
+	public String chat(String message) throws UnsupportedEncodingException {
 		long startTime = System.currentTimeMillis();
 		List<EmbeddingMatch<TextSegment>> relevantEmbeddings = search(message);
 		long endTime = System.currentTimeMillis();
@@ -77,8 +78,9 @@ public class DocumentService {
 		String information = relevantEmbeddings.stream()
                 .map(match -> match.embedded().text())
                 .collect(joining("\n\n"));
+		String str = new String(information.getBytes(),"utf8");
 		
-		Prompt promp = getChatPrompt(message,information);
+		Prompt promp = getChatPrompt(message,str);
 		
 		AiMessage aiMessage = chatLanguageModel.generate(promp.toAiMessage()).content();
 		String answer = aiMessage.text();
@@ -88,12 +90,12 @@ public class DocumentService {
 	
 	private Prompt getChatPrompt(String question, String information) {
 		PromptTemplate promptTemplate = PromptTemplate.from(
-                "Answer the following question to the best of your ability:\n"
+                "请用仅用以下内容回答:\n"
                         + "\n"
-                        + "Question:\n"
+                        + "问题:\n"
                         + "{{question}}\n"
                         + "\n"
-                        + "Base your answer on the following information:\n"
+                        + "答案:\n"
                         + "{{information}}");
 		Map<String, Object> variables = new HashMap<>();
         variables.put("question", question);
