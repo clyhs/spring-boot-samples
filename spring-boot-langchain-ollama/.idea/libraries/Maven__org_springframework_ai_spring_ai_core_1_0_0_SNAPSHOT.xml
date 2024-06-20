@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.springframework.ai:spring-ai-core:1.0.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/ai/spring-ai-core/1.0.0-SNAPSHOT/spring-ai-core-1.0.0-20240618.075853-311.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/ai/spring-ai-core/1.0.0-SNAPSHOT/spring-ai-core-1.0.0-20240618.075853-311-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/ai/spring-ai-core/1.0.0-SNAPSHOT/spring-ai-core-1.0.0-20240618.075853-311-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
