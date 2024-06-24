@@ -68,7 +68,6 @@ public class DocumentService {
 		//EmbeddingMatch<TextSegment> embeddingMatch = relevant.get(0);
 		return relevant;
 	}
-	
 	public String chat(String message) throws UnsupportedEncodingException {
 		long startTime = System.currentTimeMillis();
 		List<EmbeddingMatch<TextSegment>> relevantEmbeddings = search(message);
@@ -80,10 +79,13 @@ public class DocumentService {
                 .collect(joining("\n\n"));
 		String str = new String(information.getBytes(),"utf8");
 		
+		log.debug(str);
+		
 		Prompt promp = getChatPrompt(message,str);
 		
 		AiMessage aiMessage = chatLanguageModel.generate(promp.toAiMessage()).content();
-		String answer = aiMessage.text();
+		log.debug(aiMessage.text());
+		String answer = new String(aiMessage.text().getBytes(),"utf8");
 		
 		return answer;
 	}
