@@ -80,7 +80,9 @@
 		<module>spring-boot-2-nettyserver</module>
 		<module>spring-boot-2-nettyclient</module>
   
-	<module></module><module>spring-boot-2-websocket</module>
+	<module/><module>spring-boot-2-websocket</module>
+    <module>spring-boot-ai-mcpserver</module>
+    <module>spring-boot-ai-mcpclient</module>
   </modules>
 
 </project>
