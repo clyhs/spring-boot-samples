@@ -3,6 +3,7 @@ package org.abigfish.mcpclient;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.ChatClient.CallResponseSpec;
 import org.springframework.ai.ollama.OllamaChatModel;
+import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,12 +15,16 @@ public class FooController {
 
     @Autowired
     private OllamaChatModel ollamaChatModel;
+    
+    @Autowired
+    private OpenAiChatModel openaiChatModel;
+    
     @Autowired
     private ToolCallbackProvider toolCallbackProvider;
 
     @GetMapping("/ai/generate")
     public String generate(@RequestParam(value = "message", defaultValue = "推荐一个公众号") String message) {
-        ChatClient chatClient = ChatClient.builder(ollamaChatModel)
+        ChatClient chatClient = ChatClient.builder(openaiChatModel)
                 .defaultTools(toolCallbackProvider.getToolCallbacks())
                 .build();
         CallResponseSpec call = chatClient.prompt(message).call();

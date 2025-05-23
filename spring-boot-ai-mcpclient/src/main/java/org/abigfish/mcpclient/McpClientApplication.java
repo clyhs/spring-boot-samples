@@ -9,10 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @GROUP: 软管-技术研究中心
  **/
 @SpringBootApplication
-public class McpApplication {
+public class McpClientApplication {
 
     public static void main( String[] args )
     {
-        SpringApplication.run(McpApplication.class, args);
+        SpringApplication.run(McpClientApplication.class, args);
     }
 }
