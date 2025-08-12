@@ -83,6 +83,7 @@
 	<module/><module>spring-boot-2-websocket</module>
     <module>spring-boot-ai-mcpserver</module>
     <module>spring-boot-ai-mcpclient</module>
+    <module>spring-boot-2-neo4j</module>
   </modules>
 
 </project>
